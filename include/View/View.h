@@ -1,6 +1,7 @@
 #pragma once
 
-#include <QWidget>
+#include <QMainWindow>
+#include "PlayGround.h"
 #include "ui_View.h"
 
 /*
@@ -12,7 +13,7 @@
   самой форме.
 */
 
-class View : public QWidget, public Ui::View
+class View : public QMainWindow, public Ui::View
 {
   Q_OBJECT
 
