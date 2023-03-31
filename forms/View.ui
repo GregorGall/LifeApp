@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,0">
     <item>
-     <widget class="myWidget" name="widget" native="true"/>
+     <widget class="PlayGround" name="widget" native="true"/>
     </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0">
@@ -166,7 +166,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>myWidget</class>
+   <class>PlayGround</class>
    <extends>QWidget</extends>
    <header>View/PlayGround.h</header>
    <container>1</container>

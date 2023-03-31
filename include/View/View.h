@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
-#include "PlayGround.h"
+#include "PlayGroundProto.h"
 #include "ui_View.h"
 
 /*

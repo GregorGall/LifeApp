@@ -1,6 +1,7 @@
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_SOURCE_DIR}/forms)
 
-set(PROJECT_INCLUDES ${CMAKE_SOURCE_DIR}/include/View/View.h)
+set(PROJECT_INCLUDES ${CMAKE_SOURCE_DIR}/include/View/View.h
+                     ${CMAKE_SOURCE_DIR}/include/View/PlayGround.h)
 set(PROJECT_FORMES ${CMAKE_SOURCE_DIR}/forms/View.ui)
 
 aux_source_directory(View VIEW_SOURCES)
