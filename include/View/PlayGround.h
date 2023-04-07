@@ -1,10 +1,13 @@
 #pragma once
 #include <QtWidgets>
+#include <functional>
 
 class PlayGround: public QWidget
 {
 
   Q_OBJECT
+
+  using stateFnc = std::function<bool(QPoint)>;
 
 public:
 
@@ -12,9 +15,17 @@ public:
 
   ~PlayGround();
 
-  void toggleFocus(const QPoint& mousePos);
+  void clearFocus();
 
   QPoint getCurrentFocus();
+
+  void resize(int cols, int rows);
+
+  void setStateCheck(const stateFnc& stateCheck);
+
+signals:
+
+  void togglePoint(QPoint pos);
 
 protected:
 
@@ -28,13 +39,15 @@ private:
 
   QPoint posToNums(const QPoint& pos);
 
-signals:
-
-  void pointToggle(QPoint pos);
+  void toggleFocus(const QPoint& mousePos);
 
 private:
 
-  QSizeF quantity{50, 50};
+  QSize quantity{30, 30};
+
+  QSizeF patch;
+
+  QSizeF frame;
 
   QPoint focus{0, 0};
 
@@ -42,6 +55,10 @@ private:
 
   int objRad = 5;
 
-  QVector<QPoint> testDots;
+  stateFnc pointState = [](QPoint){ return false; };
+
+  QPen dotPen = QPen(Qt::gray, 2*pointRad, Qt::SolidLine, Qt::RoundCap);
+  QPen objPen = QPen(Qt::gray, 2*objRad, Qt::SolidLine, Qt::RoundCap);
+  QPen focusPen = QPen(Qt::red, 1, Qt::SolidLine, Qt::RoundCap);
 
 };

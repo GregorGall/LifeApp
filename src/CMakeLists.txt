@@ -1,20 +1,11 @@
-set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_SOURCE_DIR}/forms)
+file(GLOB PROJECT_INCLUDES ${CMAKE_SOURCE_DIR}/include/*/*.h)
+file(GLOB PROJECT_SOURCES ${CMAKE_SOURCE_DIR}/src/*/*.cpp)
+file(GLOB PROJECT_FORMES ${CMAKE_SOURCE_DIR}/forms/*.ui)
+set(PROJECT_FILES main.cpp ${PROJECT_SOURCES} ${PROJECT_INCLUDES} ${PROJECT_FORMES})
 
-set(PROJECT_INCLUDES ${CMAKE_SOURCE_DIR}/include/View/View.h
-                     ${CMAKE_SOURCE_DIR}/include/View/PlayGround.h)
-set(PROJECT_FORMES ${CMAKE_SOURCE_DIR}/forms/View.ui)
-
-aux_source_directory(View VIEW_SOURCES)
-aux_source_directory(App APP_SOURCES)
-aux_source_directory(./ MAIN)
-
-set(PROJECT_SOURCES ${MAIN}
-                    ${APP_SOURCES}
-                    ${VIEW_SOURCES}
-                    ${PROJECT_INCLUDES}
-                    ${PROJECT_FORMES} )
-
-add_executable(LifeApp ${PROJECT_SOURCES})
+add_executable(LifeApp ${PROJECT_FILES})
 
 target_include_directories(LifeApp PRIVATE ${CMAKE_SOURCE_DIR}/include)
+target_include_directories(LifeApp PRIVATE ${CMAKE_SOURCE_DIR}/lib/LifeLib/include)
 target_link_libraries(LifeApp PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(LifeApp PRIVATE LifeLib)

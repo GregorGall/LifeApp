@@ -8,14 +8,25 @@ PlayGround::~PlayGround()
 {
 }
 
-QPoint PlayGround::posToNums(const QPoint &pos)
+QPoint PlayGround::getCurrentFocus()
 {
-  auto rect = this->rect();
-  QSizeF dims{ rect.width()/quantity.width(), rect.height()/quantity.height() };
-  int x = round(pos.x() / dims.width());
-  int y = round(pos.y() / dims.height());
+  return focus;
+}
 
-  return {x, y};
+void PlayGround::clearFocus()
+{
+  focus = {0, 0};
+}
+
+void PlayGround::resize(int cols, int rows)
+{
+  quantity = {cols, rows};
+  update();
+}
+
+void PlayGround::setStateCheck(const stateFnc &stateCheck)
+{
+  pointState = stateCheck;
 }
 
 void PlayGround::toggleFocus(const QPoint &mousePos)
@@ -28,46 +39,45 @@ void PlayGround::toggleFocus(const QPoint &mousePos)
   }
 }
 
-QPoint PlayGround::getCurrentFocus()
+QPoint PlayGround::posToNums(const QPoint &pos)
 {
-  return focus;
+  int x = round( (pos.x() - frame.width()) / patch.width());
+  int y = round( (pos.y() - frame.height()) / patch.height());
+
+  return {x, y};
 }
 
 void PlayGround::paintEvent(QPaintEvent *event)
 {
   QPainter painter(this);
 
-  painter.setRenderHint(QPainter::Antialiasing, true);
-  painter.setPen(QPen(Qt::gray, 2*pointRad, Qt::SolidLine, Qt::RoundCap));
+  auto rect = this->rect();
+  patch.setWidth(qreal(rect.width()/quantity.width()));
+  patch.setHeight(qreal(rect.height()/quantity.height()));
+  frame.setWidth(0.5*patch.width());
+  frame.setHeight(0.5*patch.height());
 
+  painter.setRenderHint(QPainter::Antialiasing, true);
+  painter.setPen(dotPen);
   drawField(painter);
 }
 
 void PlayGround::drawField(QPainter& painter)
 {
-  auto rect = this->rect();
-  QSizeF dims{ rect.width()/quantity.width(), rect.height()/quantity.height() };
 
-  dims.setWidth( rect.width()/quantity.width() );
-  dims.setHeight( rect.height()/quantity.height() );
-
-  for(int i = 0; i < quantity.width() - 1; ++i){
-    for(int j = 0; j < quantity.height() - 1; ++j){
-      painter.drawPoint((i+1)*dims.width(),(j+1)*dims.height());
+  for(int i = 0; i < quantity.width(); ++i){
+    for(int j = 0; j < quantity.height(); ++j){
+      pointState(QPoint(i, j)) ? painter.setPen(objPen) : painter.setPen(dotPen);
+      painter.drawPoint(i*patch.width() + frame.width(),j*patch.height() + frame.height());
     }
   }
 
   if(!focus.isNull()) {
-    painter.setPen(QPen(Qt::red, 1, Qt::SolidLine, Qt::RoundCap));
-    painter.drawEllipse(focus.x()*dims.width() - objRad,
-                        focus.y()*dims.height() - objRad, 2*objRad, 2*objRad);
+    painter.setPen(focusPen);
+    int x = focus.x()*patch.width() - objRad;
+    int y = focus.y()*patch.height() - objRad;
+    painter.drawEllipse(x, y, 2*objRad, 2*objRad);
   }
-
-  for(auto& point: testDots){
-    painter.setPen(QPen(Qt::gray, 2*objRad, Qt::SolidLine, Qt::RoundCap));
-    painter.drawPoint(point.x()*dims.width(), point.y()*dims.height());
-  }
-
 }
 
 void PlayGround::mousePressEvent(QMouseEvent *pe)
@@ -75,8 +85,7 @@ void PlayGround::mousePressEvent(QMouseEvent *pe)
   auto mousePos = posToNums(pe->pos());
 
   if( pe->button() == Qt::LeftButton ) {
-    testDots.push_back(mousePos);
-    emit pointToggle(mousePos);
+    emit togglePoint(mousePos);
   }
 
   if( pe->button() == Qt::RightButton ) {

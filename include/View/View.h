@@ -1,8 +1,8 @@
 #pragma once
 
 #include <QMainWindow>
-#include "PlayGroundProto.h"
 #include "ui_View.h"
+#include "LifeModel.h"
 
 /*
   Файл ui_View.h создается uic компилятором при получении формы
@@ -17,9 +17,32 @@ class View : public QMainWindow, public Ui::View
 {
   Q_OBJECT
 
+  using LifeModel = Life::LifeModel;
+
 public:
 
-  View(QWidget *parent = nullptr);
+  View(LifeModel& modelRef, QWidget *parent = nullptr);
+
   ~View();
+
+  bool readCell(QPoint cell);
+
+public slots:
+
+  void toggleCell(QPoint cell);
+
+  void toggleRun();
+
+private:
+
+  void stop();
+
+  void run();
+
+private:
+
+  LifeModel& modelRef;
+
+  std::thread modelThread;
 
 };
