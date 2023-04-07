@@ -1,8 +1,9 @@
 #pragma once
 
 #include <QApplication>
-#include "View/View.h"
 #include "LifeModel.h"
+#include "View/View.h"
+#include "Controller/Controller.h"
 
 class App
 {
@@ -15,9 +16,15 @@ public:
 
 private:
 
+  static const int initX = 30;
+
+  static const int initY = 30;
+
   QApplication QApp;
 
   Life::LifeModel model;
+
+  Controller controller;
 
   View view;
 

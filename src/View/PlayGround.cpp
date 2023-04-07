@@ -8,7 +8,7 @@ PlayGround::~PlayGround()
 {
 }
 
-QPoint PlayGround::getCurrentFocus()
+const QPoint& PlayGround::getCurrentFocus()
 {
   return focus;
 }
@@ -18,25 +18,25 @@ void PlayGround::clearFocus()
   focus = {0, 0};
 }
 
+void PlayGround::moveFocus(const QPoint &mousePos)
+{
+  focus = mousePos;
+}
+
 void PlayGround::resize(int cols, int rows)
 {
   quantity = {cols, rows};
   update();
 }
 
-void PlayGround::setStateCheck(const stateFnc &stateCheck)
+void PlayGround::setReadFnc(const stateFnc &stateCheck)
 {
   pointState = stateCheck;
 }
 
 void PlayGround::toggleFocus(const QPoint &mousePos)
 {
-  if(focus.isNull()) {
-    focus = {mousePos.x(), mousePos.y()};
-  }
-  else {
-    focus = {0, 0};
-  }
+  focus.isNull() ? moveFocus(mousePos) : clearFocus();
 }
 
 QPoint PlayGround::posToNums(const QPoint &pos)
@@ -74,8 +74,8 @@ void PlayGround::drawField(QPainter& painter)
 
   if(!focus.isNull()) {
     painter.setPen(focusPen);
-    int x = focus.x()*patch.width() - objRad;
-    int y = focus.y()*patch.height() - objRad;
+    int x = focus.x()*patch.width() - objRad + frame.width();
+    int y = focus.y()*patch.height() - objRad + frame.height();
     painter.drawEllipse(x, y, 2*objRad, 2*objRad);
   }
 }
@@ -89,7 +89,7 @@ void PlayGround::mousePressEvent(QMouseEvent *pe)
   }
 
   if( pe->button() == Qt::RightButton ) {
-    toggleFocus(mousePos);
+    mousePos == focus ? toggleFocus(mousePos) : moveFocus(mousePos);
   }
 
   update();

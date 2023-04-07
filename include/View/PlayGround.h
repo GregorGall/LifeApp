@@ -7,7 +7,7 @@ class PlayGround: public QWidget
 
   Q_OBJECT
 
-  using stateFnc = std::function<bool(QPoint)>;
+  using stateFnc = std::function<bool(const QPoint&)>;
 
 public:
 
@@ -17,15 +17,15 @@ public:
 
   void clearFocus();
 
-  QPoint getCurrentFocus();
+  const QPoint& getCurrentFocus();
 
   void resize(int cols, int rows);
 
-  void setStateCheck(const stateFnc& stateCheck);
+  void setReadFnc(const stateFnc& stateCheck);
 
 signals:
 
-  void togglePoint(QPoint pos);
+  void togglePoint(const QPoint& pos);
 
 protected:
 
@@ -41,13 +41,15 @@ private:
 
   void toggleFocus(const QPoint& mousePos);
 
+  void moveFocus(const QPoint& mousePos);
+
 private:
 
-  QSize quantity{30, 30};
+  QSize quantity{0, 0};
 
-  QSizeF patch;
+  QSizeF patch{0, 0};
 
-  QSizeF frame;
+  QSizeF frame{0, 0};
 
   QPoint focus{0, 0};
 
@@ -55,7 +57,7 @@ private:
 
   int objRad = 5;
 
-  stateFnc pointState = [](QPoint){ return false; };
+  stateFnc pointState = [](const QPoint&){ return false; };
 
   QPen dotPen = QPen(Qt::gray, 2*pointRad, Qt::SolidLine, Qt::RoundCap);
   QPen objPen = QPen(Qt::gray, 2*objRad, Qt::SolidLine, Qt::RoundCap);

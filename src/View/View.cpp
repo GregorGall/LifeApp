@@ -1,43 +1,25 @@
 #include "View/View.h"
 
-View::View(LifeModel& modelRef, QWidget *parent) : QMainWindow(parent),
-                                                   modelRef(modelRef)
+View::View(QWidget *parent) : QMainWindow(parent)
 {
   setupUi(this);
-  statusBar()->showMessage("Test message");
-  playGround->setStateCheck([&](QPoint cell){ return readCell(cell); });
-
-  connect(playGround, SIGNAL(togglePoint(QPoint)), this, SLOT(toggleCell(QPoint)));
-  connect(LaunchBtn, SIGNAL(clicked(bool)), this, SLOT(toggleRun()));
 }
 
-View::~View(){
-
-}
-
-bool View::readCell(QPoint cell)
+View::~View()
 {
-  return modelRef.readData()(cell.x(), cell.y());
 }
 
-void View::toggleCell(QPoint cell)
+void View::setReadFnc(const stateFnc &stateCheck)
 {
-  modelRef.toggleCell(cell.x(), cell.y());
+  playGround->setReadFnc(stateCheck);
 }
 
-void View::toggleRun()
+void View::printStatus(const QString &message)
 {
-  modelThread.joinable() ? stop() : run();
+  statusBar()->showMessage(message);
 }
 
-void View::stop()
+void View::resize(const QSize &fieldSize)
 {
-  modelRef.stop();
-  modelThread.join();
+  playGround->resize(fieldSize.width(), fieldSize.height());
 }
-
-void View::run()
-{
-  modelThread = std::thread(&LifeModel::run, std::ref(modelRef), [&](){ playGround->update(); });
-}
-
