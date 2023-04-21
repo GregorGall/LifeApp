@@ -3,6 +3,8 @@ file(GLOB PROJECT_SOURCES ${CMAKE_SOURCE_DIR}/src/*/*.cpp)
 file(GLOB PROJECT_FORMES ${CMAKE_SOURCE_DIR}/forms/*.ui)
 set(PROJECT_FILES main.cpp ${PROJECT_SOURCES} ${PROJECT_INCLUDES} ${PROJECT_FORMES})
 
+message(${PROJECT_SOURCES})
+
 add_executable(LifeApp ${PROJECT_FILES})
 
 target_include_directories(LifeApp PRIVATE ${CMAKE_SOURCE_DIR}/include)

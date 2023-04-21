@@ -1,74 +1,43 @@
 #include "Controller/Controller.h"
 
-Controller::Controller(LifeModel& modelRef, View& viewRef) : modelRef(modelRef),
-                                                             viewRef(viewRef)
+Controller::Controller(LifeModel& modelRef, View& viewRef) : modelRef(modelRef), viewRef(viewRef)
 {
+  auto cellProbe = [&](const QPoint& cell){ return bool(modelRef.readData()(cell.y(), cell.x())); };
+
+  viewConnect();
+  viewRef.setReadFnc(cellProbe);
+  viewRef.resize(QSize(modelRef.readData().rows(), modelRef.readData().cols()));
 }
 
 Controller::~Controller()
 {
 }
 
-void Controller::init()
+void Controller::viewConnect()
 {
-  auto& data = modelRef.readData();
-  viewRef.resize(QSize(data.rows(), data.cols()));
+  QObject::connect(this,   SIGNAL(newFrame()), viewRef.playGround, SLOT(repaint()));
+
+  QObject::connect(viewRef.playGround,   SIGNAL(togglePoint(QPoint)), this, SLOT(toggleCell(QPoint)));
+  QObject::connect(viewRef.LaunchBtn,    SIGNAL(clicked(bool)),       this, SLOT(toggleRun()));
+  QObject::connect(viewRef.ClearBtn,     SIGNAL(clicked(bool)),       this, SLOT(clearDesk()));
+  QObject::connect(viewRef.settings(),   SIGNAL(accepted()),          this, SLOT(setup()));
+  QObject::connect(viewRef.GliderAction, &QAction::triggered, [&](){ makeFigure(Life::makeGlider); });
+  QObject::connect(viewRef.StickAction,  &QAction::triggered, [&](){ makeFigure(Life::makeStick); });
+  QObject::connect(viewRef.PondAction,   &QAction::triggered, [&](){ makeFigure(Life::makePond); });
+  QObject::connect(viewRef.SquareAction, &QAction::triggered, [&](){ makeFigure(Life::makeSquare); });
 }
 
-bool Controller::readCell(const QPoint& cell)
+void Controller::setup()
 {
-  return modelRef.readData()(cell.x(), cell.y());
-}
+  auto& changes = viewRef.settings()->getChanges();
 
-void Controller::stop()
-{
-  modelRef.stop();
-  modelThread.join();
-  viewRef.printStatus(stopState);
-}
+  QMap<QString, std::function<void()>> cntrlFnc;
+  cntrlFnc["FieldSize"] = [&](){ this->resize(changes["FieldSize"].toSize()); };
+  cntrlFnc["Delay"] = [&](){ this->setDelay(std::chrono::milliseconds(changes["Delay"].toInt())); };
+  cntrlFnc["EngineType"] = [&](){ this->setEngine(Life::EngineType(changes["EngineType"].toInt())); };
 
-void Controller::run()
-{
-  auto viewCallBack = [&](){ viewRef.update(); };
-  modelThread = std::thread(&LifeModel::run, std::ref(modelRef), viewCallBack);
-  viewRef.printStatus(runState);
-}
+  for(auto it = changes.begin(); it != changes.end(); ++it) {
+    cntrlFnc[it.key()]();
+  }
 
-void Controller::toggleRun()
-{
-  modelThread.joinable() ? stop() : run();
-}
-
-void Controller::toggleCell(const QPoint& cell)
-{
-  modelRef.toggleCell(cell.x(), cell.y());
-  viewRef.update();
-}
-
-void Controller::clearDesk()
-{
-//    modelRef.clear();
-    for(int i = 0; i < modelRef.readData().rows(); ++i) {
-      for(int j = 0; j < modelRef.readData().cols(); ++j) {
-        if(bool(modelRef.readData()(i, j))){ modelRef.toggleCell(i,j); }
-      }
-    }
-
-    viewRef.update();
-}
-
-void Controller::createGlider()
-{
-  const QPoint& cell = viewRef.playGround->getCurrentFocus();
-  int row = cell.x();
-  int col = cell.y();
-  using cellGroup = std::list<std::pair<int, int>>;
-  cellGroup glider{ {row, col},
-                    {row + 1, col + 1},
-                    {row + 1, col + 2},
-                    {row + 2, col    },
-                    {row + 2, col + 1} };
-
-  modelRef.toggleGroup(glider);
-  viewRef.update();
 }

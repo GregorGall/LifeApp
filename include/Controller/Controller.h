@@ -2,10 +2,10 @@
 #include <QApplication>
 #include "View/View.h"
 #include "LifeModel.h"
+#include "Figures.h"
 
 class Controller : public QObject
 {
-
   Q_OBJECT
 
   using LifeModel = Life::LifeModel;
@@ -16,23 +16,35 @@ public:
 
   ~Controller();
 
-  void init();
-
-  bool readCell(const QPoint& cell);
-
 public slots:
 
-  void stop();
+  void setup();
 
-  void run();
+  void clearDesk();
 
   void toggleRun();
 
   void toggleCell(const QPoint& cell);
 
-  void clearDesk();
+  void makeFigure(Life::makeFnc make);
 
-  void createGlider();
+private:
+
+  void run();
+
+  void stop();
+
+  void resize(const QSize& fieldSize);
+
+  void setEngine(Life::EngineType type);
+
+  void setDelay(std::chrono::milliseconds delay);
+
+  void viewConnect();
+
+signals:
+
+  void newFrame();
 
 private:
 
@@ -42,8 +54,11 @@ private:
 
   std::thread modelThread;
 
-  const QString runState = "Life is in process";
-  const QString stopState = "Life is stopped";
+  int genNum{ 0 };
+
+  const QString runStatus = "Life is in process";
+
+  const QString stopStatus = "Life is stopped";
 
 };
 

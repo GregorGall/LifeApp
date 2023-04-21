@@ -52,8 +52,8 @@ void PlayGround::paintEvent(QPaintEvent *event)
   QPainter painter(this);
 
   auto rect = this->rect();
-  patch.setWidth(qreal(rect.width()/quantity.width()));
-  patch.setHeight(qreal(rect.height()/quantity.height()));
+  patch.setWidth(qreal(rect.width())/qreal(quantity.width()));
+  patch.setHeight(qreal(rect.height())/qreal(quantity.height()));
   frame.setWidth(0.5*patch.width());
   frame.setHeight(0.5*patch.height());
 
@@ -64,7 +64,6 @@ void PlayGround::paintEvent(QPaintEvent *event)
 
 void PlayGround::drawField(QPainter& painter)
 {
-
   for(int i = 0; i < quantity.width(); ++i){
     for(int j = 0; j < quantity.height(); ++j){
       pointState(QPoint(i, j)) ? painter.setPen(objPen) : painter.setPen(dotPen);

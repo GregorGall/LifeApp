@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Settings</class>
+ <widget class="QDialog" name="Settings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>279</width>
+    <height>350</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Settings</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,3,0">
+   <item>
+    <widget class="QGroupBox" name="fielControl">
+     <property name="title">
+      <string>Field Control</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <layout class="QHBoxLayout" name="labelLayout">
+        <item>
+         <widget class="QLabel" name="sizeXlb">
+          <property name="text">
+           <string>SizeX</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="sizeYlb">
+          <property name="text">
+           <string>SizeY</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="inputLayout">
+        <item>
+         <widget class="QSpinBox" name="sizeX">
+          <property name="minimum">
+           <number>10</number>
+          </property>
+          <property name="maximum">
+           <number>1000</number>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSpinBox" name="sizeY">
+          <property name="minimum">
+           <number>10</number>
+          </property>
+          <property name="maximum">
+           <number>1000</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="engineControl">
+     <property name="title">
+      <string>Engine Control</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0,0">
+      <item>
+       <widget class="QLabel" name="delayLb">
+        <property name="text">
+         <string>Delay</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSlider" name="delayLine">
+        <property name="minimum">
+         <number>50</number>
+        </property>
+        <property name="maximum">
+         <number>1000</number>
+        </property>
+        <property name="singleStep">
+         <number>50</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="commonEngine">
+        <property name="text">
+         <string>Common Engine</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">EngineButton</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="OMPEngine">
+        <property name="text">
+         <string>OMP parallel Engine</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">EngineButton</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="threadEngine">
+        <property name="text">
+         <string>Thread Engine</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">EngineButton</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="cudaEngine">
+        <property name="text">
+         <string>Cuda Engine</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">EngineButton</string>
+        </attribute>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="applyBtn">
+     <property name="text">
+      <string>Применить</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="EngineButton"/>
+ </buttongroups>
+</ui>

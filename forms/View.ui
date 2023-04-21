@@ -29,7 +29,7 @@
          <bool>true</bool>
         </property>
         <property name="title">
-         <string>Поколение №2024</string>
+         <string>Generation №0</string>
         </property>
         <property name="flat">
          <bool>false</bool>
@@ -81,7 +81,7 @@
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
+   <widget class="QMenu" name="file">
     <property name="title">
      <string>Файл</string>
     </property>
@@ -90,26 +90,26 @@
     <addaction name="SettingsAction"/>
     <addaction name="ExitAction"/>
    </widget>
-   <widget class="QMenu" name="menu_2">
+   <widget class="QMenu" name="view">
     <property name="title">
      <string>Вид</string>
     </property>
     <addaction name="ToolAction"/>
    </widget>
-   <widget class="QMenu" name="menu_3">
+   <widget class="QMenu" name="help">
     <property name="title">
      <string>Помощь</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menu_4">
+   <widget class="QMenu" name="about">
     <property name="title">
      <string>О программе</string>
     </property>
    </widget>
-   <addaction name="menu"/>
-   <addaction name="menu_2"/>
-   <addaction name="menu_3"/>
-   <addaction name="menu_4"/>
+   <addaction name="file"/>
+   <addaction name="view"/>
+   <addaction name="help"/>
+   <addaction name="about"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -124,6 +124,8 @@
    </attribute>
    <addaction name="GliderAction"/>
    <addaction name="StickAction"/>
+   <addaction name="PondAction"/>
+   <addaction name="SquareAction"/>
   </widget>
   <action name="GliderAction">
    <property name="text">
@@ -161,6 +163,16 @@
    </property>
    <property name="text">
     <string>Панель Инструментов</string>
+   </property>
+  </action>
+  <action name="PondAction">
+   <property name="text">
+    <string>Pond</string>
+   </property>
+  </action>
+  <action name="SquareAction">
+   <property name="text">
+    <string>Square</string>
    </property>
   </action>
  </widget>
