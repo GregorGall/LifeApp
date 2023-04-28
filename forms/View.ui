@@ -29,7 +29,7 @@
          <bool>true</bool>
         </property>
         <property name="title">
-         <string>Generation №0</string>
+         <string>Control Panel</string>
         </property>
         <property name="flat">
          <bool>false</bool>

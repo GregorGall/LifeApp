@@ -4,15 +4,27 @@
 #include <QSettings>
 #include "ui_Settings.h"
 
+enum class StatusProperty {
+  EngineType,
+  Delay,
+  Generation,
+  RunStatus,
+  FieldSize
+};
+
 class Settings : public QDialog, public Ui::Settings
 {
   Q_OBJECT
 
 public:
 
+  static const QVector<QString> engineType;
+
+public:
+
   Settings(QWidget* parent = nullptr);
 
-  const QMap<QString, QVariant>& getChanges() const;
+  const QMap<StatusProperty, QVariant>& getChanges() const;
 
 public slots:
 
@@ -20,12 +32,8 @@ public slots:
 
 private:
 
-  QMap<QString, QVariant> changes;
+  QMap<StatusProperty, QVariant> changes;
 
-  QMap<QString, QVariant> currentState;
-
-  const QString fieldProperty{"FieldSize"};
-  const QString delayProperty{"Delay"};
-  const QString engineProperty{"EngineType"};
+  QMap<StatusProperty, QVariant> currentState;
 
 };

@@ -12,9 +12,7 @@ class Controller : public QObject
 
 public:
 
-  Controller(LifeModel& modelRef, View& viewRef);
-
-  ~Controller();
+  explicit Controller(LifeModel& modelRef, View& viewRef);
 
 public slots:
 
@@ -23,6 +21,8 @@ public slots:
   void clearDesk();
 
   void toggleRun();
+
+  void updateStatus();
 
   void toggleCell(const QPoint& cell);
 
@@ -53,12 +53,6 @@ private:
   LifeModel& modelRef;
 
   std::thread modelThread;
-
-  int genNum{ 0 };
-
-  const QString runStatus = "Life is in process";
-
-  const QString stopStatus = "Life is stopped";
 
 };
 

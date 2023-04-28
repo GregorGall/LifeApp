@@ -12,32 +12,34 @@ class View : public QMainWindow, public Ui::View
 
 public:
 
+  static const QString runStatus;
+
+  static const QString stopStatus;
+
+public:
+
   View(QWidget *parent = nullptr);
 
-  ~View();
-
   void setReadFnc(const stateFnc& stateCheck);
-
-  void updateStatus(const QString& message);
-
-  void updateGeneration(int genNum);
 
   void resize(const QSize& fieldSize);
 
   const Settings* settings();
 
+  void setStatus(StatusProperty index, const QString& value);
+
+  void updateStatus();
+
 signals:
 
   void accepted();
 
-private slots:
-
-  void on_SettingsBtn_clicked();
-
 private:
 
-  const QString genTitle = "Generation №%1";
+  Settings* settingsPtr{ new Settings(this) }; //WARNING need shared_ptr
 
-  Settings* settingsPtr{ new Settings(this) };
+  QVector<QString> statusArgs = { "-", "-", "-", "-" };
+
+  const QString statusTemplate = "Engine: %1, Delay: %2ms, Generation: %3 %4";
 
 };

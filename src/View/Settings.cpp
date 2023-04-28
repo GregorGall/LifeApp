@@ -1,27 +1,25 @@
 #include "View/Settings.h"
 
-Settings::Settings(QWidget *parent): QDialog{parent} {
-  setupUi(this);
-  connect(this,     SIGNAL(accepted()),    this, SLOT(apply()));
-  connect(applyBtn, SIGNAL(clicked(bool)), SIGNAL(accepted()));
+const QVector<QString> Settings::engineType{"Common", "Thread", "OpenMP", "Cuda"};
 
-  EngineButton->setId(commonEngine, 1);
-  EngineButton->setId(threadEngine, 2);
-  EngineButton->setId(OMPEngine,    3);
-  EngineButton->setId(cudaEngine,   4);
-}
-
-const QMap<QString, QVariant> &Settings::getChanges() const
+Settings::Settings(QWidget *parent): QDialog{parent}
 {
-  return changes;
+  setupUi(this);
+  connect(this, SIGNAL(accepted()), this, SLOT(apply()));
+  connect(buttonBox, SIGNAL(clicked(QAbstractButton*)), SIGNAL(accepted()));
+
+  EngineButton->setId(commonBtn, 0);
+  EngineButton->setId(threadBtn, 1);
+  EngineButton->setId(openMPBtn, 2);
+  EngineButton->setId(cudaBtn,   3);
 }
 
-void Settings::apply() {
-
-  QMap<QString, QVariant> data;
-  data[delayProperty] = int{ delayLine->value() };
-  data[engineProperty] = EngineButton->checkedId();
-  data[fieldProperty] = QSize{ sizeX->value(), sizeY->value() };
+void Settings::apply()
+{
+  QMap<StatusProperty, QVariant> data;
+  data[StatusProperty::Delay] = int{ delayLine->value() };
+  data[StatusProperty::EngineType] = EngineButton->checkedId();
+  data[StatusProperty::FieldSize] = QSize{ sizeX->value(), sizeY->value() };
 
   changes.clear();
   for(auto it = data.begin(); it != data.end(); ++it) {
@@ -31,4 +29,9 @@ void Settings::apply() {
     }
   }
 
+}
+
+const QMap<StatusProperty, QVariant> &Settings::getChanges() const
+{
+  return changes;
 }

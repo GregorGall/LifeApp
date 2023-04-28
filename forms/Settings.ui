@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>279</width>
-    <height>350</height>
+    <width>255</width>
+    <height>306</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Settings</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,3,0">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="3,0">
    <item>
-    <widget class="QGroupBox" name="fielControl">
+    <widget class="QGroupBox" name="engineControl">
      <property name="title">
-      <string>Field Control</string>
+      <string>Life settings</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0,0,0,0">
       <item>
        <layout class="QHBoxLayout" name="labelLayout">
         <item>
@@ -62,15 +62,6 @@
         </item>
        </layout>
       </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QGroupBox" name="engineControl">
-     <property name="title">
-      <string>Engine Control</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0,0">
       <item>
        <widget class="QLabel" name="delayLb">
         <property name="text">
@@ -81,7 +72,7 @@
       <item>
        <widget class="QSlider" name="delayLine">
         <property name="minimum">
-         <number>50</number>
+         <number>25</number>
         </property>
         <property name="maximum">
          <number>1000</number>
@@ -89,13 +80,28 @@
         <property name="singleStep">
          <number>50</number>
         </property>
+        <property name="pageStep">
+         <number>50</number>
+        </property>
+        <property name="value">
+         <number>25</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="invertedAppearance">
+         <bool>false</bool>
+        </property>
+        <property name="invertedControls">
+         <bool>false</bool>
+        </property>
+        <property name="tickPosition">
+         <enum>QSlider::NoTicks</enum>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="commonEngine">
+       <widget class="QRadioButton" name="commonBtn">
         <property name="text">
          <string>Common Engine</string>
         </property>
@@ -108,9 +114,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="OMPEngine">
+       <widget class="QRadioButton" name="openMPBtn">
         <property name="text">
-         <string>OMP parallel Engine</string>
+         <string>OpenMP Engine</string>
         </property>
         <attribute name="buttonGroup">
          <string notr="true">EngineButton</string>
@@ -118,7 +124,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="threadEngine">
+       <widget class="QRadioButton" name="threadBtn">
         <property name="text">
          <string>Thread Engine</string>
         </property>
@@ -128,7 +134,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="cudaEngine">
+       <widget class="QRadioButton" name="cudaBtn">
         <property name="text">
          <string>Cuda Engine</string>
         </property>
@@ -141,16 +147,39 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="applyBtn">
-     <property name="text">
-      <string>Применить</string>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Apply|QDialogButtonBox::Ok</set>
+     </property>
+     <property name="centerButtons">
+      <bool>false</bool>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Settings</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>127</x>
+     <y>284</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>127</x>
+     <y>152</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <buttongroups>
   <buttongroup name="EngineButton"/>
  </buttongroups>
