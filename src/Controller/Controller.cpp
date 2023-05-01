@@ -29,9 +29,9 @@ void Controller::setup()
 {
   auto& changes = viewRef.settings()->getChanges();
 
-  auto& delay = changes[StatusProperty::Delay];
-  auto& fieldSize = changes[StatusProperty::FieldSize];
-  auto& engineType = changes[StatusProperty::EngineType];
+  const auto& delay = changes[StatusProperty::Delay];
+  const auto& fieldSize = changes[StatusProperty::FieldSize];
+  const auto& engineType = changes[StatusProperty::EngineType];
 
   QMap<StatusProperty, std::function<void()>> cntrlFnc;
   cntrlFnc[StatusProperty::FieldSize]  = [&](){ this->resize(fieldSize.toSize()); };
