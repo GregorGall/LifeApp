@@ -4,11 +4,19 @@ const QString View::runStatus{"executes"};
 
 const QString View::stopStatus{"stopped"};
 
-View::View(QWidget *parent) : QMainWindow(parent)
+View::View(double widthPart, double heightPart, QWidget *parent) : QMainWindow(parent)
 {
   setupUi(this);
   connect(settingsPtr, SIGNAL(accepted()), this, SIGNAL(accepted()));
   connect(SettingsBtn, SIGNAL(clicked()), settingsPtr, SLOT(show()));
+
+  auto userScreen = QApplication::desktop()->screenGeometry();
+
+  userScreen.setWidth(userScreen.width() * widthPart);
+  userScreen.setHeight(userScreen.height() * heightPart);
+  userScreen.moveCenter(QApplication::desktop()->screenGeometry().center());
+
+  setGeometry(userScreen);
 }
 
 void View::setReadFnc(const stateFnc &stateCheck)
