@@ -4,10 +4,6 @@ PlayGround::PlayGround(QWidget* parent) : QWidget(parent)
 {
 }
 
-PlayGround::~PlayGround()
-{
-}
-
 const QPoint& PlayGround::getCurrentFocus()
 {
   return focus;
@@ -37,6 +33,15 @@ void PlayGround::setReadFnc(const stateFnc &stateCheck)
 void PlayGround::toggleFocus(const QPoint &mousePos)
 {
   focus.isNull() ? moveFocus(mousePos) : clearFocus();
+}
+
+const QSize& PlayGround::fitSize()
+{
+  auto rect = this->rect();
+  quantity.setWidth(rect.width() / (2*objRad) - 1);
+  quantity.setHeight(rect.height() / (2*objRad) - 1);
+
+  return quantity;
 }
 
 QPoint PlayGround::posToNums(const QPoint &pos)

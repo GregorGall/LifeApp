@@ -13,9 +13,11 @@ public:
 
   PlayGround(QWidget* parent = nullptr);
 
-  ~PlayGround();
+  ~PlayGround() = default;
 
   void clearFocus();
+
+  const QSize& fitSize();
 
   const QPoint& getCurrentFocus();
 

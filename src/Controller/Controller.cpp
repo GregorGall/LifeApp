@@ -6,7 +6,7 @@ Controller::Controller(LifeModel& modelRef, View& viewRef) : modelRef(modelRef),
 
   viewConnect();
   viewRef.setReadFnc(cellProbe);
-  viewRef.resize(QSize(modelRef.readData().rows(), modelRef.readData().cols()));
+  resize(viewRef.playGround->fitSize());
 }
 
 void Controller::viewConnect()

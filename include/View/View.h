@@ -18,17 +18,17 @@ public:
 
 public:
 
-  View(QWidget *parent = nullptr);
-
-  void setReadFnc(const stateFnc& stateCheck);
-
-  void resize(const QSize& fieldSize);
+  View(double widthPart = 0.5, double heightPart = 0.65, QWidget *parent = nullptr);
 
   const Settings* settings();
 
-  void setStatus(StatusProperty index, const QString& value);
-
   void updateStatus();
+
+  void resize(const QSize& fieldSize);
+
+  void setReadFnc(const stateFnc& stateCheck);
+
+  void setStatus(StatusProperty index, const QString& value);
 
 signals:
 
@@ -36,7 +36,8 @@ signals:
 
 private:
 
-  Settings* settingsPtr{ new Settings(this) }; //WARNING need shared_ptr
+  // Memory cleared by Qt because of parent ptr
+  Settings* settingsPtr{ new Settings(this) };
 
   QVector<QString> statusArgs = { "-", "-", "-", "-" };
 
