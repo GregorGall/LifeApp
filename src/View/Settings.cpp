@@ -35,3 +35,10 @@ const QMap<StatusProperty, QVariant> &Settings::getChanges() const
 {
   return changes;
 }
+
+void Settings::setSize(const QSize &value)
+{
+  sizeX->setValue(value.width());
+  sizeY->setValue(value.height());
+  currentState[StatusProperty::FieldSize] = value;
+}

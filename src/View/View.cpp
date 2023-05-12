@@ -27,6 +27,7 @@ void View::setReadFnc(const stateFnc &stateCheck)
 
 void View::resize(const QSize &fieldSize)
 {
+  settingsPtr->setSize(fieldSize);
   playGround->resize(fieldSize.width(), fieldSize.height());
 }
 
@@ -39,6 +40,14 @@ void View::setStatus(StatusProperty index, const QString& value)
 {
     statusArgs[static_cast<int>(index)] = value;
     updateStatus();
+}
+
+void View::setStatus(QVector<QString> status)
+{
+  int count = 0;
+  for(auto& value: status){
+    setStatus(static_cast<StatusProperty>(count++), value);
+  }
 }
 
 void View::updateStatus()

@@ -26,6 +26,8 @@ public:
 
   const QMap<StatusProperty, QVariant>& getChanges() const;
 
+  void setSize(const QSize& value);
+
 public slots:
 
   void apply();

@@ -10,6 +10,9 @@ class View : public QMainWindow, public Ui::View
 
   using stateFnc = std::function<bool(QPoint)>;
 
+  static constexpr double initWidthPart{ 0.5 };
+  static constexpr double initHeightPart{ 0.65 };
+
 public:
 
   static const QString runStatus;
@@ -18,7 +21,7 @@ public:
 
 public:
 
-  View(double widthPart = 0.5, double heightPart = 0.65, QWidget *parent = nullptr);
+  View(double widthPart = initWidthPart, double heightPart = initHeightPart, QWidget *parent = nullptr);
 
   const Settings* settings();
 
@@ -29,6 +32,8 @@ public:
   void setReadFnc(const stateFnc& stateCheck);
 
   void setStatus(StatusProperty index, const QString& value);
+
+  void setStatus(QVector<QString> status);
 
 signals:
 
