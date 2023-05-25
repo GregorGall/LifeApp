@@ -17,6 +17,7 @@ View::View(double widthPart, double heightPart, QWidget *parent) : QMainWindow(p
   userScreen.moveCenter(QApplication::desktop()->screenGeometry().center());
 
   setGeometry(userScreen);
+  LaunchBtn->setFocus();
   show();
 }
 
