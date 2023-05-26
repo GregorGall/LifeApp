@@ -39,6 +39,12 @@ signals:
 
   void accepted();
 
+private slots:
+
+  void aboutMessage();
+
+  void setupGeometry(double widthPart, double heightPart);
+
 private:
 
   // Memory cleared by Qt because of parent ptr

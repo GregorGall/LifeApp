@@ -7,9 +7,18 @@ const QString View::stopStatus{"stopped"};
 View::View(double widthPart, double heightPart, QWidget *parent) : QMainWindow(parent)
 {
   setupUi(this);
-  connect(settingsPtr, SIGNAL(accepted()), this, SIGNAL(accepted()));
-  connect(SettingsBtn, SIGNAL(clicked()), settingsPtr, SLOT(show()));
+  connect(settingsPtr,    SIGNAL(accepted()),  this,         SIGNAL(accepted()));
+  connect(SettingsBtn,    SIGNAL(clicked()),   settingsPtr,  SLOT(show()));
+  connect(SettingsAction, SIGNAL(triggered()), settingsPtr,  SLOT(show()));
+  connect(about,          SIGNAL(triggered()), this,         SLOT(aboutMessage()));
 
+  setupGeometry(widthPart, heightPart);
+  LaunchBtn->setFocus();
+  show();
+}
+
+void View::setupGeometry(double widthPart, double heightPart)
+{
   auto userScreen = QApplication::desktop()->screenGeometry();
 
   userScreen.setWidth(userScreen.width() * widthPart);
@@ -17,8 +26,6 @@ View::View(double widthPart, double heightPart, QWidget *parent) : QMainWindow(p
   userScreen.moveCenter(QApplication::desktop()->screenGeometry().center());
 
   setGeometry(userScreen);
-  LaunchBtn->setFocus();
-  show();
 }
 
 void View::setReadFnc(const stateFnc &stateCheck)
@@ -49,6 +56,11 @@ void View::setStatus(QVector<QString> status)
   for(auto& value: status){
     setStatus(static_cast<StatusProperty>(count++), value);
   }
+}
+
+void View::aboutMessage()
+{
+  QMessageBox::about(this, "О программе","Классическая реализация клеточных автоматов. Особенность программы в наличии четырех движков для расчета нового положения клеток.");
 }
 
 void View::updateStatus()

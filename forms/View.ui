@@ -105,20 +105,16 @@
     </property>
     <addaction name="ToolAction"/>
    </widget>
-   <widget class="QMenu" name="help">
+   <widget class="QMenu" name="info">
     <property name="title">
-     <string>Помощь</string>
+     <string>Справка</string>
     </property>
-   </widget>
-   <widget class="QMenu" name="about">
-    <property name="title">
-     <string>О программе</string>
-    </property>
+    <addaction name="help"/>
+    <addaction name="about"/>
    </widget>
    <addaction name="file"/>
    <addaction name="view"/>
-   <addaction name="help"/>
-   <addaction name="about"/>
+   <addaction name="info"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -156,20 +152,32 @@
    <property name="text">
     <string>Сохранить</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
   <action name="LoadAction">
    <property name="text">
     <string>Загрузить</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="ExitAction">
    <property name="text">
     <string>Выход</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
   </action>
   <action name="SettingsAction">
    <property name="text">
     <string>Настройки</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
    </property>
   </action>
   <action name="ToolAction">
@@ -194,6 +202,22 @@
    </property>
    <property name="shortcut">
     <string>Q</string>
+   </property>
+  </action>
+  <action name="help">
+   <property name="text">
+    <string>Помощь</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="about">
+   <property name="text">
+    <string>О программе</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
    </property>
   </action>
  </widget>
