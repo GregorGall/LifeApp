@@ -16,4 +16,8 @@ namespace Life {
 
   cellGroup makeSquare(int row, int col);
 
+  cellGroup makeToad(int row, int col);
+
+  cellGroup makeBoat(int row, int col);
+
 }

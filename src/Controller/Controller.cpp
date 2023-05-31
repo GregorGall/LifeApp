@@ -23,6 +23,8 @@ void Controller::viewConnect()
   QObject::connect(viewRef.StickAction,  &QAction::triggered, [&](){ makeFigure(Life::makeStick); });
   QObject::connect(viewRef.PondAction,   &QAction::triggered, [&](){ makeFigure(Life::makePond); });
   QObject::connect(viewRef.SquareAction, &QAction::triggered, [&](){ makeFigure(Life::makeSquare); });
+  QObject::connect(viewRef.BoatAction,   &QAction::triggered, [&](){ makeFigure(Life::makeBoat); });
+  QObject::connect(viewRef.ToadAction,   &QAction::triggered, [&](){ makeFigure(Life::makeToad); });
 }
 
 void Controller::setup()

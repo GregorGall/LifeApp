@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/icons">
+        <file>BoatIcon.svg</file>
+        <file>ToadIcon.svg</file>
         <file>GliderIcon.svg</file>
         <file>PondIcon.svg</file>
         <file>SquareIcon.svg</file>

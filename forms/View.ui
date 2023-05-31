@@ -127,10 +127,12 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="GliderAction"/>
+   <addaction name="BoatAction"/>
    <addaction name="StickAction"/>
-   <addaction name="PondAction"/>
+   <addaction name="GliderAction"/>
    <addaction name="SquareAction"/>
+   <addaction name="ToadAction"/>
+   <addaction name="PondAction"/>
   </widget>
   <action name="GliderAction">
    <property name="icon">
@@ -234,6 +236,30 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="ToadAction">
+   <property name="icon">
+    <iconset resource="../resource/resource.qrc">
+     <normaloff>:/icons/ToadIcon.svg</normaloff>:/icons/ToadIcon.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Toad</string>
+   </property>
+   <property name="shortcut">
+    <string>T</string>
+   </property>
+  </action>
+  <action name="BoatAction">
+   <property name="icon">
+    <iconset resource="../resource/resource.qrc">
+     <normaloff>:/icons/BoatIcon.svg</normaloff>:/icons/BoatIcon.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Boat</string>
+   </property>
+   <property name="shortcut">
+    <string>B</string>
    </property>
   </action>
  </widget>
