@@ -19,11 +19,11 @@ View::View(double widthPart, double heightPart, QWidget *parent) : QMainWindow(p
 
 void View::setupGeometry(double widthPart, double heightPart)
 {
-  auto userScreen = QApplication::desktop()->screenGeometry();
+  auto userScreen = QApplication::primaryScreen()->geometry();
 
   userScreen.setWidth(userScreen.width() * widthPart);
   userScreen.setHeight(userScreen.height() * heightPart);
-  userScreen.moveCenter(QApplication::desktop()->screenGeometry().center());
+  userScreen.moveCenter(QApplication::primaryScreen()->geometry().center());
 
   setGeometry(userScreen);
 }

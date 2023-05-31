@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>GliderIcon.svg</file>
+        <file>PondIcon.svg</file>
+        <file>SquareIcon.svg</file>
+        <file>StickIcon.svg</file>
+    </qresource>
+</RCC>

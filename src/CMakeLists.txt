@@ -5,6 +5,7 @@ set(PROJECT_FILES main.cpp ${PROJECT_SOURCES} ${PROJECT_INCLUDES} ${PROJECT_FORM
 
 message(${PROJECT_SOURCES})
 
+qt_add_resources(PROJECT_FILES ${PROJECT_SOURCE_DIR}/resource/resource.qrc)
 add_executable(LifeApp ${PROJECT_FILES})
 
 target_include_directories(LifeApp PRIVATE ${CMAKE_SOURCE_DIR}/include)
