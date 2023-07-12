@@ -27,6 +27,8 @@ public:
 
   void updateStatus();
 
+  void toggleLaunchBtn();
+
   void resize(const QSize& fieldSize);
 
   void setReadFnc(const stateFnc& stateCheck);

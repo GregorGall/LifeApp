@@ -60,12 +60,23 @@ void View::setStatus(QVector<QString> status)
 
 void View::aboutMessage()
 {
-  QMessageBox::about(this, "О программе","Классическая реализация клеточных автоматов. Особенность программы в наличии четырех движков для расчета нового положения клеток.");
+  QMessageBox::about(this, "About","Классическая реализация клеточных автоматов. Особенность программы в наличии четырех движков для расчета нового положения клеток.");
 }
 
 void View::updateStatus()
 {
   auto message = statusTemplate;
   statusbar->showMessage(message.arg(statusArgs[0], statusArgs[1], statusArgs[2], statusArgs[3]));
+}
+
+void View::toggleLaunchBtn()
+{
+  static int counter = 0;
+  QVector<QString> name{"Launch","Stop"};
+  QVector<QIcon> icon{QIcon::fromTheme("media-playback-start"), QIcon::fromTheme("media-playback-pause")};
+
+  counter = (counter + 1) % 2;
+  LaunchBtn->setText(name[counter]);
+  LaunchBtn->setIcon(icon[counter]);
 }
 

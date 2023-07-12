@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Жизнь</string>
+   <string>The Life</string>
   </property>
   <property name="toolButtonStyle">
    <enum>Qt::ToolButtonIconOnly</enum>
@@ -55,8 +55,26 @@
          </property>
          <item>
           <widget class="QPushButton" name="SettingsBtn">
+           <property name="baseSize">
+            <size>
+             <width>50</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Settings</string>
+           </property>
+           <property name="icon">
+            <iconset theme="preferences-system"/>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -65,12 +83,30 @@
            <property name="text">
             <string>Clear</string>
            </property>
+           <property name="icon">
+            <iconset theme="media-playlist-repeat"/>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="LaunchBtn">
            <property name="text">
             <string>Launch</string>
+           </property>
+           <property name="icon">
+            <iconset theme="media-playback-start"/>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -92,7 +128,7 @@
    </property>
    <widget class="QMenu" name="file">
     <property name="title">
-     <string>Файл</string>
+     <string>File</string>
     </property>
     <addaction name="LoadAction"/>
     <addaction name="SaveAction"/>
@@ -101,13 +137,13 @@
    </widget>
    <widget class="QMenu" name="view">
     <property name="title">
-     <string>Вид</string>
+     <string>View</string>
     </property>
     <addaction name="ToolAction"/>
    </widget>
    <widget class="QMenu" name="info">
     <property name="title">
-     <string>Справка</string>
+     <string>Info</string>
     </property>
     <addaction name="help"/>
     <addaction name="about"/>
@@ -160,7 +196,10 @@
   </action>
   <action name="SaveAction">
    <property name="text">
-    <string>Сохранить</string>
+    <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -168,7 +207,7 @@
   </action>
   <action name="LoadAction">
    <property name="text">
-    <string>Загрузить</string>
+    <string>Load</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -176,7 +215,10 @@
   </action>
   <action name="ExitAction">
    <property name="text">
-    <string>Выход</string>
+    <string>Exit</string>
+   </property>
+   <property name="toolTip">
+    <string>Exit</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
@@ -184,7 +226,10 @@
   </action>
   <action name="SettingsAction">
    <property name="text">
-    <string>Настройки</string>
+    <string>Settings</string>
+   </property>
+   <property name="toolTip">
+    <string>Settings</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+E</string>
@@ -195,7 +240,10 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Панель Инструментов</string>
+    <string>Tools</string>
+   </property>
+   <property name="toolTip">
+    <string>Tools</string>
    </property>
   </action>
   <action name="PondAction">
@@ -224,7 +272,10 @@
   </action>
   <action name="help">
    <property name="text">
-    <string>Помощь</string>
+    <string>Help</string>
+   </property>
+   <property name="toolTip">
+    <string>Help</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+H</string>
@@ -232,7 +283,10 @@
   </action>
   <action name="about">
    <property name="text">
-    <string>О программе</string>
+    <string>About</string>
+   </property>
+   <property name="toolTip">
+    <string>About</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+A</string>

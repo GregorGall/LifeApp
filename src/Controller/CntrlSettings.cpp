@@ -40,6 +40,7 @@ void Controller::setDelay(std::chrono::milliseconds delay)
 void Controller::toggleRun()
 {
   modelThread.joinable() ? stop() : run();
+  viewRef.toggleLaunchBtn();
 }
 
 void Controller::updateStatus()
