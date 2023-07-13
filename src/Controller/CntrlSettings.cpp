@@ -6,6 +6,7 @@ void Controller::run()
 
   modelThread = std::thread(&LifeModel::run, std::ref(modelRef), viewCallBack);
   viewRef.setStatus(StatusProperty::RunStatus, View::runStatus);
+  viewRef.toggleLaunchBtn();
 }
 
 void Controller::stop()
@@ -13,6 +14,7 @@ void Controller::stop()
   modelRef.stop();
   modelThread.join();
   viewRef.setStatus(StatusProperty::RunStatus, View::stopStatus);
+  viewRef.toggleLaunchBtn();
 }
 
 void Controller::resize(const QSize &fieldSize)
@@ -40,7 +42,6 @@ void Controller::setDelay(std::chrono::milliseconds delay)
 void Controller::toggleRun()
 {
   modelThread.joinable() ? stop() : run();
-  viewRef.toggleLaunchBtn();
 }
 
 void Controller::updateStatus()

@@ -68,7 +68,8 @@
             <string>Settings</string>
            </property>
            <property name="icon">
-            <iconset theme="preferences-system"/>
+            <iconset theme="preferences-system">
+             <normaloff>.</normaloff>.</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -84,7 +85,8 @@
             <string>Clear</string>
            </property>
            <property name="icon">
-            <iconset theme="media-playlist-repeat"/>
+            <iconset theme="media-playlist-repeat">
+             <normaloff>.</normaloff>.</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -100,7 +102,8 @@
             <string>Launch</string>
            </property>
            <property name="icon">
-            <iconset theme="media-playback-start"/>
+            <iconset theme="media-playback-start">
+             <normaloff>.</normaloff>.</iconset>
            </property>
            <property name="iconSize">
             <size>

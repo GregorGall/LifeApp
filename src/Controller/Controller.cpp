@@ -9,6 +9,15 @@ Controller::Controller(LifeModel& modelRef, View& viewRef) : modelRef(modelRef),
   resize(viewRef.playGround->fitSize());
 }
 
+void Controller::exit()
+{
+  if(modelThread.joinable()) {
+    stop();
+  }
+
+  QApplication::exit();
+}
+
 void Controller::viewConnect()
 {
   QObject::connect(this,   SIGNAL(newFrame()), viewRef.playGround, SLOT(repaint()));
@@ -17,6 +26,7 @@ void Controller::viewConnect()
   QObject::connect(viewRef.playGround,   SIGNAL(togglePoint(QPoint)), this, SLOT(toggleCell(QPoint)));
   QObject::connect(viewRef.LaunchBtn,    SIGNAL(clicked(bool)),       this, SLOT(toggleRun()));
   QObject::connect(viewRef.ClearBtn,     SIGNAL(clicked(bool)),       this, SLOT(clearDesk()));
+  QObject::connect(viewRef.ExitAction,   SIGNAL(triggered()),         this, SLOT(exit()));
   QObject::connect(viewRef.settings(),   SIGNAL(accepted()),          this, SLOT(setup()));
 
   QObject::connect(viewRef.GliderAction, &QAction::triggered, [&](){ makeFigure(Life::makeGlider); });

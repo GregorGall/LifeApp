@@ -16,6 +16,8 @@ public:
 
 public slots:
 
+  void exit();
+
   void setup();
 
   void clearDesk();
