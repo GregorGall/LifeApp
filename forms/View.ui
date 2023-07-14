@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>960</width>
-    <height>540</height>
+    <height>633</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -242,6 +242,9 @@
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Tools</string>
    </property>
@@ -336,5 +339,22 @@
  <resources>
   <include location="../resource/resource.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>ToolAction</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>toolBar</receiver>
+   <slot>setVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>479</x>
+     <y>41</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

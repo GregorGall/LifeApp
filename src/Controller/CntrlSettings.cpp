@@ -63,9 +63,9 @@ void Controller::clearDesk()
 {
   if(modelThread.joinable()) { stop(); }
   modelRef.clearDesk();
+  viewRef.playGround->repaint();
 
   QApplication::processEvents();
-  viewRef.playGround->repaint();
   updateStatus(0);
 }
 
