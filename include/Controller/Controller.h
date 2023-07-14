@@ -24,7 +24,7 @@ public slots:
 
   void toggleRun();
 
-  void updateStatus();
+  void updateStatus(int value = -1);
 
   void toggleCell(const QPoint& cell);
 

@@ -18,6 +18,25 @@ void Controller::exit()
   QApplication::exit();
 }
 
+void Controller::setup()
+{
+  auto& changes = viewRef.settings()->getChanges();
+
+  const auto& delay = changes[StatusProperty::Delay];
+  const auto& fieldSize = changes[StatusProperty::FieldSize];
+  const auto& engineType = changes[StatusProperty::EngineType];
+
+  QMap<StatusProperty, std::function<void()>> cntrlFnc;
+  cntrlFnc[StatusProperty::FieldSize]  = [&](){ this->resize(fieldSize.toSize()); };
+  cntrlFnc[StatusProperty::EngineType] = [&](){ this->setEngine(static_cast<Life::EngineType>(engineType.toInt())); };
+  cntrlFnc[StatusProperty::Delay]      = [&](){ this->setDelay(static_cast<std::chrono::milliseconds>(delay.toInt())); };
+
+  for(auto it = changes.begin(); it != changes.end(); ++it) {
+    cntrlFnc[it.key()]();
+  }
+
+}
+
 void Controller::viewConnect()
 {
   QObject::connect(this,   SIGNAL(newFrame()), viewRef.playGround, SLOT(repaint()));
@@ -37,21 +56,4 @@ void Controller::viewConnect()
   QObject::connect(viewRef.ToadAction,   &QAction::triggered, [&](){ makeFigure(Life::makeToad); });
 }
 
-void Controller::setup()
-{
-  auto& changes = viewRef.settings()->getChanges();
 
-  const auto& delay = changes[StatusProperty::Delay];
-  const auto& fieldSize = changes[StatusProperty::FieldSize];
-  const auto& engineType = changes[StatusProperty::EngineType];
-
-  QMap<StatusProperty, std::function<void()>> cntrlFnc;
-  cntrlFnc[StatusProperty::FieldSize]  = [&](){ this->resize(fieldSize.toSize()); };
-  cntrlFnc[StatusProperty::EngineType] = [&](){ this->setEngine(static_cast<Life::EngineType>(engineType.toInt())); };
-  cntrlFnc[StatusProperty::Delay]      = [&](){ this->setDelay(static_cast<std::chrono::milliseconds>(delay.toInt())); };
-
-  for(auto it = changes.begin(); it != changes.end(); ++it) {
-    cntrlFnc[it.key()]();
-  }
-
-}

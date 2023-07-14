@@ -44,9 +44,11 @@ void Controller::toggleRun()
   modelThread.joinable() ? stop() : run();
 }
 
-void Controller::updateStatus()
+void Controller::updateStatus(int value)
 {
   static int generation = 0;
+
+  if(value >= 0){ generation = value; }
   viewRef.setStatus(StatusProperty::Generation, QString::number(generation++));
 }
 
@@ -61,7 +63,10 @@ void Controller::clearDesk()
 {
   if(modelThread.joinable()) { stop(); }
   modelRef.clearDesk();
-  emit newFrame();
+
+  QApplication::processEvents();
+  viewRef.playGround->repaint();
+  updateStatus(0);
 }
 
 void Controller::makeFigure(Life::makeFnc make)
@@ -70,7 +75,7 @@ void Controller::makeFigure(Life::makeFnc make)
 
   //toggle(row, col) row -> y; col -> x
   modelRef.toggleGroup(make(cell.y(), cell.x()));
-  emit newFrame();
+  viewRef.playGround->repaint();
 }
 
 
