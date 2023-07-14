@@ -45,6 +45,8 @@ private slots:
 
   void aboutMessage();
 
+  void helpMessage();
+
   void setupGeometry(double widthPart, double heightPart);
 
 private:

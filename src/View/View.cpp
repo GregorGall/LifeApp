@@ -11,6 +11,7 @@ View::View(double widthPart, double heightPart, QWidget *parent) : QMainWindow(p
   connect(SettingsBtn,    SIGNAL(clicked()),   settingsPtr,  SLOT(show()));
   connect(SettingsAction, SIGNAL(triggered()), settingsPtr,  SLOT(show()));
   connect(about,          SIGNAL(triggered()), this,         SLOT(aboutMessage()));
+  connect(help,           SIGNAL(triggered()), this,         SLOT(helpMessage()));
 
   setupGeometry(widthPart, heightPart);
   LaunchBtn->setFocus();
@@ -60,7 +61,34 @@ void View::setStatus(QVector<QString> status)
 
 void View::aboutMessage()
 {
-  QMessageBox::about(this, "About","Классическая реализация клеточных автоматов. Особенность программы в наличии четырех движков для расчета нового положения клеток.");
+
+  QString msg = "The Game of Life, also known simply as Life is a cellular automation\ndevised by the British mathematician J.H. Conway.\n\n";
+  msg += "Author: GregorGall\n";
+  msg += "App version: " + QString(VERSION) + "\n";
+  msg += "Commit: " + QString(COMMIT_HASH) + "\n";
+  msg += "Build date: " + QString(TODAY) + "\n";
+  msg += "Build time: " + QString(NOW) + "\n";
+
+  QMessageBox::about(this, "About", msg);
+}
+
+void View::helpMessage()
+{
+  QString msg = "Main control:\n\n";
+  msg += "LMB - toggle cell state\n";
+  msg += "RMB - focus on cell\n";
+  msg += "Double RMB - clear focus from cell\n\n";
+
+  msg += "You can focus on cell and create some of default figures by click them on tool panel\n\n";
+  msg += "Default figures shortcuts:\n";
+  msg += "B - Boat\n";
+  msg += "S - Stick\n";
+  msg += "G - Glider\n";
+  msg += "Q - Square\n";
+  msg += "T - Toad\n";
+  msg += "P - Pond\n";
+
+  QMessageBox::information(this, "Help", msg);
 }
 
 void View::updateStatus()
