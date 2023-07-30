@@ -7,7 +7,6 @@ qt_add_resources(PROJECT_FILES ${PROJECT_SOURCE_DIR}/resource/resource.qrc)
 add_executable(LifeApp ${PROJECT_FILES})
 
 target_include_directories(LifeApp PRIVATE ${CMAKE_SOURCE_DIR}/include)
-target_include_directories(LifeApp PRIVATE ${CMAKE_SOURCE_DIR}/lib/LifeLib/include)
 target_link_libraries(LifeApp PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 target_link_libraries(LifeApp PRIVATE LifeLib)
 

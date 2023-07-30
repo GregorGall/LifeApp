@@ -10,7 +10,7 @@ class View : public QMainWindow, public Ui::View
 
   using stateFnc = std::function<bool(QPoint)>;
 
-  static constexpr double initWidthPart{ 0.5 };
+  static constexpr double initWidthPart{ 0.65 };
   static constexpr double initHeightPart{ 0.65 };
 
 public:
