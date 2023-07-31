@@ -1,15 +1,15 @@
 <RCC>
     <qresource prefix="/icons">
-        <file>BoatIcon.svg</file>
-        <file>ToadIcon.svg</file>
-        <file>GliderIcon.svg</file>
-        <file>PondIcon.svg</file>
-        <file>SquareIcon.svg</file>
-        <file>StickIcon.svg</file>
-        <file>media-playback-pause.svg</file>
-        <file>media-playback-start.svg</file>
-        <file>media-playback-stop.svg</file>
-        <file>media-playlist-repeat.svg</file>
-        <file>preferences-system.svg</file>
+        <file>Tools/ToadIcon.svg</file>
+        <file>Tools/StickIcon.svg</file>
+        <file>Tools/SquareIcon.svg</file>
+        <file>Tools/PondIcon.svg</file>
+        <file>Tools/GliderIcon.svg</file>
+        <file>Tools/BoatIcon.svg</file>
+        <file>Control/preferences-system.svg</file>
+        <file>Control/media-playlist-repeat.svg</file>
+        <file>Control/media-playback-stop.svg</file>
+        <file>Control/media-playback-start.svg</file>
+        <file>Control/media-playback-pause.svg</file>
     </qresource>
 </RCC>

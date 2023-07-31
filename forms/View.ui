@@ -69,7 +69,7 @@
            </property>
            <property name="icon">
             <iconset resource="../resource/resource.qrc">
-             <normaloff>:/icons/preferences-system.svg</normaloff>:/icons/preferences-system.svg</iconset>
+             <normaloff>:/icons/Control/preferences-system.svg</normaloff>:/icons/Control/preferences-system.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -86,7 +86,7 @@
            </property>
            <property name="icon">
             <iconset resource="../resource/resource.qrc">
-             <normaloff>:/icons/media-playlist-repeat.svg</normaloff>:/icons/media-playlist-repeat.svg</iconset>
+             <normaloff>:/icons/Control/media-playlist-repeat.svg</normaloff>:/icons/Control/media-playlist-repeat.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -103,7 +103,7 @@
            </property>
            <property name="icon">
             <iconset resource="../resource/resource.qrc">
-             <normaloff>:/icons/media-playback-start.svg</normaloff>:/icons/media-playback-start.svg</iconset>
+             <normaloff>:/icons/Control/media-playback-start.svg</normaloff>:/icons/Control/media-playback-start.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -176,7 +176,7 @@
   <action name="GliderAction">
    <property name="icon">
     <iconset resource="../resource/resource.qrc">
-     <normaloff>:/icons/GliderIcon.svg</normaloff>:/icons/GliderIcon.svg</iconset>
+     <normaloff>:/icons/Tools/GliderIcon.svg</normaloff>:/icons/Tools/GliderIcon.svg</iconset>
    </property>
    <property name="text">
     <string>Glider</string>
@@ -188,7 +188,7 @@
   <action name="StickAction">
    <property name="icon">
     <iconset resource="../resource/resource.qrc">
-     <normaloff>:/icons/StickIcon.svg</normaloff>:/icons/StickIcon.svg</iconset>
+     <normaloff>:/icons/Tools/StickIcon.svg</normaloff>:/icons/Tools/StickIcon.svg</iconset>
    </property>
    <property name="text">
     <string>Stick</string>
@@ -255,7 +255,7 @@
   <action name="PondAction">
    <property name="icon">
     <iconset resource="../resource/resource.qrc">
-     <normaloff>:/icons/PondIcon.svg</normaloff>:/icons/PondIcon.svg</iconset>
+     <normaloff>:/icons/Tools/PondIcon.svg</normaloff>:/icons/Tools/PondIcon.svg</iconset>
    </property>
    <property name="text">
     <string>Pond</string>
@@ -267,7 +267,7 @@
   <action name="SquareAction">
    <property name="icon">
     <iconset resource="../resource/resource.qrc">
-     <normaloff>:/icons/SquareIcon.svg</normaloff>:/icons/SquareIcon.svg</iconset>
+     <normaloff>:/icons/Tools/SquareIcon.svg</normaloff>:/icons/Tools/SquareIcon.svg</iconset>
    </property>
    <property name="text">
     <string>Square</string>
@@ -301,7 +301,7 @@
   <action name="ToadAction">
    <property name="icon">
     <iconset resource="../resource/resource.qrc">
-     <normaloff>:/icons/ToadIcon.svg</normaloff>:/icons/ToadIcon.svg</iconset>
+     <normaloff>:/icons/Tools/ToadIcon.svg</normaloff>:/icons/Tools/ToadIcon.svg</iconset>
    </property>
    <property name="text">
     <string>Toad</string>
@@ -313,7 +313,7 @@
   <action name="BoatAction">
    <property name="icon">
     <iconset resource="../resource/resource.qrc">
-     <normaloff>:/icons/BoatIcon.svg</normaloff>:/icons/BoatIcon.svg</iconset>
+     <normaloff>:/icons/Tools/BoatIcon.svg</normaloff>:/icons/Tools/BoatIcon.svg</iconset>
    </property>
    <property name="text">
     <string>Boat</string>
