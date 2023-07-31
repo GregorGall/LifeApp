@@ -24,7 +24,7 @@ void Controller::resize(const QSize &fieldSize)
   //toggle(row, col) row -> y; col -> x
   modelRef.resize(fieldSize.height(), fieldSize.width());
   viewRef.resize(fieldSize);
-  emit newFrame();
+  viewRef.playGround->repaint();
 }
 
 void Controller::setEngine(Life::EngineType type)
@@ -56,7 +56,7 @@ void Controller::toggleCell(const QPoint& cell)
 {
   //toggle(row, col) row -> y; col -> x
   modelRef.toggleCell(cell.y(), cell.x());
-  emit newFrame();
+  viewRef.playGround->repaint();
 }
 
 void Controller::clearDesk()
