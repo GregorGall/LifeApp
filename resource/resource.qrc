@@ -6,5 +6,10 @@
         <file>PondIcon.svg</file>
         <file>SquareIcon.svg</file>
         <file>StickIcon.svg</file>
+        <file>media-playback-pause.svg</file>
+        <file>media-playback-start.svg</file>
+        <file>media-playback-stop.svg</file>
+        <file>media-playlist-repeat.svg</file>
+        <file>preferences-system.svg</file>
     </qresource>
 </RCC>

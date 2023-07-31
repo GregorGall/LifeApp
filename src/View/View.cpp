@@ -101,7 +101,7 @@ void View::toggleLaunchBtn()
 {
   static int counter = 0;
   QVector<QString> name{"Launch","Stop"};
-  QVector<QIcon> icon{QIcon::fromTheme("media-playback-start"), QIcon::fromTheme("media-playback-pause")};
+  QVector<QIcon> icon{QIcon(":/icons/media-playback-start.svg"), QIcon(":/icons/media-playback-pause.svg")};
 
   counter = (counter + 1) % 2;
   LaunchBtn->setText(name[counter]);
