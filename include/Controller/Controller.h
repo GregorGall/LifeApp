@@ -48,6 +48,8 @@ signals:
 
   void newFrame();
 
+  void redraw();
+
 private:
 
   View& viewRef;

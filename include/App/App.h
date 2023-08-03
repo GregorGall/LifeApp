@@ -16,7 +16,7 @@ public:
 
 private:
 
-  static constexpr std::chrono::milliseconds initDelay{ 25 };
+  static constexpr std::chrono::milliseconds initDelay{ 200 };
 
   QApplication QApp;
 

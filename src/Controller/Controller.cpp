@@ -39,8 +39,9 @@ void Controller::setup()
 
 void Controller::viewConnect()
 {
-  QObject::connect(this,   SIGNAL(newFrame()), viewRef.playGround, SLOT(repaint()));
+  QObject::connect(this,   SIGNAL(redraw()),   viewRef.playGround, SLOT(update()));
   QObject::connect(this,   SIGNAL(newFrame()), this,               SLOT(updateStatus()));
+  QObject::connect(this,   SIGNAL(newFrame()), this,               SIGNAL(redraw()));
 
   QObject::connect(viewRef.playGround,   SIGNAL(togglePoint(QPoint)), this, SLOT(toggleCell(QPoint)));
   QObject::connect(viewRef.LaunchBtn,    SIGNAL(clicked(bool)),       this, SLOT(toggleRun()));

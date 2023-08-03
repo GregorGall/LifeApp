@@ -72,7 +72,7 @@
       <item>
        <widget class="QSlider" name="delayLine">
         <property name="minimum">
-         <number>25</number>
+         <number>0</number>
         </property>
         <property name="maximum">
          <number>1000</number>
@@ -84,7 +84,7 @@
          <number>50</number>
         </property>
         <property name="value">
-         <number>25</number>
+         <number>200</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -96,7 +96,10 @@
          <bool>false</bool>
         </property>
         <property name="tickPosition">
-         <enum>QSlider::NoTicks</enum>
+         <enum>QSlider::TicksBothSides</enum>
+        </property>
+        <property name="tickInterval">
+         <number>200</number>
         </property>
        </widget>
       </item>
