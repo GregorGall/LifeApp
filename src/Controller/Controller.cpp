@@ -39,15 +39,15 @@ void Controller::setup()
 
 void Controller::viewConnect()
 {
-  QObject::connect(this,   SIGNAL(redraw()),   viewRef.playGround, SLOT(update()));
-  QObject::connect(this,   SIGNAL(newFrame()), this,               SLOT(updateStatus()));
-  QObject::connect(this,   SIGNAL(newFrame()), this,               SIGNAL(redraw()));
+  QObject::connect(this, SIGNAL(redraw()),   viewRef.playGround, SLOT(update()));
+  QObject::connect(this, SIGNAL(newFrame()), this,               SLOT(updateStatus()));
+  QObject::connect(this, SIGNAL(newFrame()), this,               SIGNAL(redraw()));
 
-  QObject::connect(viewRef.playGround,   SIGNAL(togglePoint(QPoint)), this, SLOT(toggleCell(QPoint)));
-  QObject::connect(viewRef.LaunchBtn,    SIGNAL(clicked(bool)),       this, SLOT(toggleRun()));
-  QObject::connect(viewRef.ClearBtn,     SIGNAL(clicked(bool)),       this, SLOT(clearDesk()));
-  QObject::connect(viewRef.ExitAction,   SIGNAL(triggered()),         this, SLOT(exit()));
-  QObject::connect(viewRef.settings(),   SIGNAL(accepted()),          this, SLOT(setup()));
+  QObject::connect(viewRef.playGround, SIGNAL(togglePoint(QPoint)), this, SLOT(toggleCell(QPoint)));
+  QObject::connect(viewRef.LaunchBtn,  SIGNAL(clicked(bool)),       this, SLOT(toggleRun()));
+  QObject::connect(viewRef.ClearBtn,   SIGNAL(clicked(bool)),       this, SLOT(clearDesk()));
+  QObject::connect(viewRef.ExitAction, SIGNAL(triggered()),         this, SLOT(exit()));
+  QObject::connect(viewRef.settings(), SIGNAL(accepted()),          this, SLOT(setup()));
 
   QObject::connect(viewRef.GliderAction, &QAction::triggered, [&](){ makeFigure(Life::makeGlider); });
   QObject::connect(viewRef.StickAction,  &QAction::triggered, [&](){ makeFigure(Life::makeStick); });
