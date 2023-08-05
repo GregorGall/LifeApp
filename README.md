@@ -18,13 +18,12 @@ Cимулятор "жизни". Представляет собой графич
 
 Поле клеток
 
-
-<img src="CellField.png" width="600">
+![CellField](/doc/CellField.png)
 
 Окно настроек и справки
 
-<img src="Help.png" height="250">
-<img src="Settings.png" height="260">
+![Help](/doc/Help.png)
+![Settings](/doc/Settings.png)
 
 В окне настроек доступно изменение размеров поля, выбор расчетного ядра и задержки между кадрами.
 Настройки могут изменяться "на лету" без закрытия соответствующего окна, для этого требуется нажать кнопку Apply.
@@ -32,7 +31,7 @@ Cимулятор "жизни". Представляет собой графич
 
 О программе
 
-<img src="About.png" height="260">
+![About](/doc/About.png)
 
 ## Управление
 
@@ -60,8 +59,4 @@ Ctrl+A - О программе
 ## Документация
 
 Обзор библиотеки c тестами, benchmark и doxygen документацией,реализующей расчетную
-модель приведен тут: ![LifeLib](../lib/LifeLib/README.md)
-
-Диграмма классов отражающая архитектуру приложения:
-
-<img src="ClassDiagram.png" height="450">
+модель приведен тут: [LifeLib](https://github.com/GregorGall/LifeLib/blob/dev/README.md)
