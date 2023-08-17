@@ -133,8 +133,6 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="LoadAction"/>
-    <addaction name="SaveAction"/>
     <addaction name="SettingsAction"/>
     <addaction name="ExitAction"/>
    </widget>

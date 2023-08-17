@@ -11,7 +11,7 @@ Settings::Settings(QWidget *parent): QDialog{parent}
   EngineButton->setId(commonBtn, 0);
   EngineButton->setId(threadBtn, 1);
   EngineButton->setId(openMPBtn, 2);
-  EngineButton->setId(cudaBtn,   3);
+
 }
 
 void Settings::apply()

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>255</width>
-    <height>306</height>
+    <height>316</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <property name="title">
       <string>Life settings</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0,0,0,0">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0,0,0,0,0">
       <item>
        <layout class="QHBoxLayout" name="labelLayout">
         <item>
@@ -130,16 +130,6 @@
        <widget class="QRadioButton" name="threadBtn">
         <property name="text">
          <string>Thread Engine</string>
-        </property>
-        <attribute name="buttonGroup">
-         <string notr="true">EngineButton</string>
-        </attribute>
-       </widget>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="cudaBtn">
-        <property name="text">
-         <string>Cuda Engine</string>
         </property>
         <attribute name="buttonGroup">
          <string notr="true">EngineButton</string>
