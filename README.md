@@ -2,6 +2,9 @@
 
 ![Logo](/doc/Logo.png)
 
+[![LifeApp CI](https://github.com/GregorGall/LifeApp/actions/workflows/LifeAppCI.yml/badge.svg)](https://github.com/GregorGall/LifeApp/actions/workflows/LifeAppCI.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 ## Описание
 
 Cимулятор "Жизни". Представляет собой графическое приложение, написанное с использованием Qt
